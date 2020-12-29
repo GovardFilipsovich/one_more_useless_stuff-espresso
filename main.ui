@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
-    <height>507</height>
+    <width>554</width>
+    <height>547</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,6 +38,32 @@
    <attribute name="horizontalHeaderDefaultSectionSize">
     <number>150</number>
    </attribute>
+  </widget>
+  <widget class="QPushButton" name="add">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>510</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>add</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="change">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>510</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>change</string>
+   </property>
   </widget>
  </widget>
  <resources/>
