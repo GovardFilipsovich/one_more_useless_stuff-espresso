@@ -2,15 +2,16 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QTableWidgetItem, QDialog
 from PyQt5 import uic
 import sqlite3
+from MainUi import Ui_widget
+from addEditCoffeeForm import Ui_Form
 
 
-class Form(QDialog):
+class Form(QDialog, Ui_Form):
     def __init__(self, parent=None, mod=0):
         super(Form, self).__init__(parent)
+        self.setupUi(self)
         self.par = parent
-        uic.loadUi("addEditCoffeeForm.ui", self)
         self.Enter.clicked.connect(self.enter)
-        print(mod)
         if mod != 0:
             self.name.setText(self.par.res[1])
             self.level.setText(self.par.res[2])
@@ -29,17 +30,17 @@ class Form(QDialog):
             self.par.add_or_change = -1
 
 
-class Example(QWidget):
+class Example(QWidget, Ui_widget):
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.setupUi(self)
         self.fill_table()
         self.add_or_change = -1
         self.res = -1
         self.run()
 
     def initUI(self):
-        uic.loadUi("main.ui", self)
         self.con = sqlite3.connect("coffee.sqlite")
         
 
@@ -52,7 +53,6 @@ class Example(QWidget):
     def add_launch_form(self):
         form = Form(self)
         form.exec()
-        print(self.add_or_change)
         if self.add_or_change != -1:
             cur = self.con.cursor()
             cur.execute("""INSERT INTO coffee(name, level_of_roasting, grinding, description_of_taste, cost, volume) VALUES("{}", "{}", "{}", "{}", {}, {})""".format(*self.add_or_change))
